@@ -13,6 +13,7 @@ class CreatePictureForm(forms.ModelForm):
         # https://stackoverflow.com/questions/5827590/css-styling-in-django-forms
         
         widgets = {
+            # Added an id for the user in order to select it using DOM manipulation into the script tag from the add_picture.html
             "user": forms.TextInput(attrs={"class": "form-control", "value": "", "id": "user", "type": "hidden"}),
             "image_url": forms.Textarea(attrs={"class": "form-control", "placeholder": "Add an image url"}),
         }
