@@ -1,0 +1,17 @@
+{% extends "my_journey/base.html" %} {% block content %}
+
+<h2> Add Picture </h2>
+<br/>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    
+        <button class="btn btn-outline-success"> Add </button>
+        <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
+    </form>
+</div>
+
+
+{% endblock %}

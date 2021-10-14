@@ -1,0 +1,17 @@
+{% extends "my_journey/base.html" %} {% block content %}
+
+<h2> Edit Picture </h2>
+<br/>
+
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    
+        <button class="btn btn-outline-success"> Update </button>
+        <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> Cancel </a>
+    </form>
+</div>
+
+
+{% endblock %}

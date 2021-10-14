@@ -20,4 +20,6 @@ from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('my_journey.urls') ),
+    path('members/', include('django.contrib.auth.urls') ),
+    path('members/', include('my_journey_members.urls') ),
 ]

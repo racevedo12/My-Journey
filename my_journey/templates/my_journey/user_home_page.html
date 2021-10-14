@@ -1,0 +1,23 @@
+{% extends "my_journey/base.html" %} {% block content %}
+
+<div class="row">
+
+    <!-- <h1> My Journey </h1> -->
+    <h3> These are the pictures that the users have added so far. Click on them to see the details. </h3>
+    <hr/>
+
+    <ul>
+        {% for picture in object_list %}
+        <li>
+            <h4> User: {{ picture.user }}</h4>
+            <a href="{% url 'picture_detail' pk=picture.pk %}"> <img src={{ picture.image_url }} alt={{ picture.image_url }} /> </a>
+            <br/>
+        </li>
+
+        <br/>
+        <br/>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

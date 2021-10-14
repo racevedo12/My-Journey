@@ -1,0 +1,28 @@
+{% extends "my_journey/base.html" %} {% block content %}
+
+<a href="{% url 'edit_picture' pk=picture.pk%}"> Edit Picture </a>
+<a href="{% url 'delete_picture' pk=picture.pk%}"> Delete Picture </a>
+<hr/>
+<h3> User: {{ picture.user }}</h3>
+<img src={{ picture.image_url }} alt={{ picture.image_url }} />
+
+<p> Likes: {{ picture.likes }} </p>
+<p> Dislikes: {{ picture.dislikes }} </p>
+<p> Comments: </p>
+
+<ul>
+    {% if picture.comments > 0 %}
+    <li>
+        {% for comment in picture.comments %}
+        {{comment}}
+        {% endfor %}
+    </li>
+    {% endif %}
+</ul> 
+
+<br/>
+
+<a href="{% url 'user_home_page' %}" class="btn btn-secondary"> Back </a>
+
+
+{% endblock %}

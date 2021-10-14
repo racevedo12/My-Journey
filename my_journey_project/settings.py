@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_journey',
+    'my_journey_members',
 ]
 
 MIDDLEWARE = [
