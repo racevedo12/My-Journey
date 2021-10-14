@@ -1,17 +1,29 @@
 {% extends "my_journey/base.html" %} {% block content %}
 
-<h2> Edit Picture </h2>
-<br/>
+{% if user.is_authenticated %}
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    {% if user.id == picture.user.id %}
+        <h2> Edit Picture </h2>
+        <br/>
+
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+            
+                <button class="btn btn-outline-success"> Update </button>
+                <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> Cancel </a>
+            </form>
+        </div>
     
-        <button class="btn btn-outline-success"> Update </button>
-        <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> Cancel </a>
-    </form>
-</div>
+    {% else %}
+        <h2> You cannot edit another user's picture. </h2>
 
+    {% endif %}
+
+{% else %}
+    <h2> You have to be logged in order to edit the picture. </h2>
+
+{% endif %}
 
 {% endblock %}

@@ -1,17 +1,31 @@
 {% extends "my_journey/base.html" %} {% block content %}
 
-<h2> Add Picture </h2>
-<br/>
+{% if user.is_authenticated %}
+    <h2> Add Picture </h2>
+    <br/>
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-    
-        <button class="btn btn-outline-success"> Add </button>
-        <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
-    </form>
-</div>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        
+            <button class="btn btn-outline-success"> Add </button>
+            <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
+        </form>
+    </div>
+
+    <!-- This is to add the name of the currently user logged in, into the form.--> 
+    <!-- So the backend can save the username from who added the new picture --> 
+    <script>
+        let username = "{{ user.username }}";
+        document.getElementById("user").value = username;
+    </script>
+
+{% else %}
+    <h2> You have to be logged in order to add a picture. </h2>
+
+{% endif %}
+
 
 
 {% endblock %}
