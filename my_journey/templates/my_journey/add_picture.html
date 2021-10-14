@@ -17,8 +17,8 @@
     <!-- This is to add the name of the currently user logged in, into the form.--> 
     <!-- So the backend can save the username from who added the new picture --> 
     <script>
-        let username = "{{ user.username }}";
-        document.getElementById("user").value = username;
+        let userID = "{{ user.id }}";
+        document.getElementById("user").value = userID;
     </script>
 
 {% else %}
