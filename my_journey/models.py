@@ -7,7 +7,7 @@ from django.urls import reverse
 class Picture(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image_url = models.TextField(null=False)
-    likes = models.BigIntegerField(default=0)
+    likes = models.ManyToManyField(User, related_name="user_picture")
     dislikes = models.BigIntegerField(default=0)
     comments = ArrayField(models.TextField(), blank=True, null=True)
 
