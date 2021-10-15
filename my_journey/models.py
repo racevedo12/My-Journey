@@ -17,3 +17,6 @@ class Picture(models.Model):
     # Defining an absolute url for the model in order to redirect the page after a post request
     def get_absolute_url(self):
         return reverse("user_home_page")
+
+    def total_likes(self):
+        return self.likes.count()

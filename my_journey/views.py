@@ -19,6 +19,19 @@ class PictureDetailView(DetailView):
     model = Picture
     template_name = "my_journey/picture_detail.html"
 
+    # Overwritting the get_context_data method in order to render our total_likes function
+    # from the picture Model, and send it to the picture_details.html 
+    
+    def get_context_data(self, *args, **kwargs):
+        the_picture = get_object_or_404(Picture, id=self.kwargs["pk"])
+        total_likes = the_picture.total_likes()
+
+        context = super(PictureDetailView, self).get_context_data()
+        
+        # The context field works as a dictionary, that's why we can create a new key-value pair
+        context["total_likes"] = total_likes
+        return context
+
 class AddPictureView(CreateView):
     model = Picture
     form_class = CreatePictureForm

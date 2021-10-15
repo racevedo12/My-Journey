@@ -13,7 +13,7 @@
 <h3> User: {{ picture.user }}</h3>
 <img src={{ picture.image_url }} alt={{ picture.image_url }} />
 
-<p> Likes: {{ picture.likes }} </p>
+<p> Likes: {{ total_likes }} </p>
 <p> Dislikes: {{ picture.dislikes }} </p>
 <p> Comments: </p>
 
@@ -29,16 +29,15 @@
 
 <br/>
 
-<a href="{% url 'user_home_page' %}" class="btn btn-outline-secondary"> Back </a>
-
-<hr/>
-
 <form action="{% url 'like_picture' pk=picture.pk %}" method="POST">
     {% csrf_token %}
     
     <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-primary"> 
         Like 
     </button>
+
+    <a href="{% url 'user_home_page' %}" class="btn btn-outline-secondary"> Back </a>
 </form>
+
 
 {% endblock %}
