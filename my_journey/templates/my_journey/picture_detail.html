@@ -14,7 +14,7 @@
 <img src={{ picture.image_url }} alt={{ picture.image_url }} />
 
 <p> Likes: {{ total_likes }} </p>
-<p> Dislikes: {{ picture.dislikes }} </p>
+<p> Dislikes: {{ total_dislikes }} </p>
 <p> Comments: </p>
 
 <ul>
@@ -30,23 +30,31 @@
 <br/>
 
 {% if user.is_authenticated %}
-    <form action="{% url 'like_picture' pk=picture.pk %}" method="POST">
-        {% csrf_token %}
-        
-        {% if liked == True %}
-            <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-danger"> 
-                Dislike 
-            </button>
-        
-        {% else %}
-            <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-primary"> 
-                Like 
-            </button>
-        
-        {% endif %}
 
-        <a href="{% url 'user_home_page' %}" class="btn btn-outline-secondary"> Back </a>
-    </form>
+
+
+
+<form action="{% url 'like_picture' pk=picture.pk %}" method="POST">
+    {% csrf_token %}
+    
+    
+    <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-primary"> 
+        Like 
+    </button>
+
+</form>
+
+<form action="{% url 'dislike_picture' pk=picture.pk %}" method="POST">
+    {% csrf_token %}
+    
+    <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-danger"> 
+        Dislike 
+    </button>
+    
+</form>
+
+<a href="{% url 'user_home_page' %}" class="btn btn-outline-secondary"> Back </a>
+
 {% endif %}
 
 {% endblock %}

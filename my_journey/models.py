@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -7,9 +6,8 @@ from django.urls import reverse
 class Picture(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image_url = models.TextField(null=False)
-    likes = models.ManyToManyField(User, related_name="user_picture")
-    dislikes = models.BigIntegerField(default=0)
-    comments = ArrayField(models.TextField(), blank=True, null=True)
+    likes = models.ManyToManyField(User, related_name="user_picture_likes")
+    dislikes = models.ManyToManyField(User, related_name="user_picture_dislikes")
 
     def __str__(self):
         return self.image_url
@@ -20,3 +18,14 @@ class Picture(models.Model):
 
     def total_likes(self):
         return self.likes.count()
+
+    def total_dislikes(self):
+        return self.dislikes.count()
+
+class Comment(models.Model):
+    picture = models.ForeignKey(Picture, on_delete=models.CASCADE, related_name="picture_comments")
+    text = models.TextField(null=False)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.text

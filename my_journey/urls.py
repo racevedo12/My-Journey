@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserHomeView, PictureDetailView, AddPictureView, EditPictureView, DeletePictureView, LikePictureView
+from .views import UserHomeView, PictureDetailView, AddPictureView, EditPictureView, DeletePictureView, LikePictureView, DislikePictureView
 
 urlpatterns = [
     # User Home Page
@@ -20,5 +20,6 @@ urlpatterns = [
     # Liking a picture
     path("picture/like/<int:pk>", LikePictureView, name="like_picture"),
 
-
+    # Disliking a picture
+    path("picture/dislike/<int:pk>", DislikePictureView, name="dislike_picture"),
 ]
