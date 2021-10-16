@@ -26,10 +26,17 @@ class PictureDetailView(DetailView):
         the_picture = get_object_or_404(Picture, id=self.kwargs["pk"])
         total_likes = the_picture.total_likes()
 
+        liked = False
+
+        if ( the_picture.likes.filter(id=self.request.user.id).exists() ):
+            liked = True
+
         context = super(PictureDetailView, self).get_context_data()
         
         # The context field works as a dictionary, that's why we can create a new key-value pair
         context["total_likes"] = total_likes
+        context["liked"] = liked
+        
         return context
 
 class AddPictureView(CreateView):
@@ -55,8 +62,17 @@ def LikePictureView(request, pk):
     # And for the id it uses it's for the name attribute for the picture_id that we use in the picture_detail.html like button from the form
     picture = get_object_or_404(Picture, id=request.POST.get("picture_id"))
 
-    # Then add the current user who liked the picture into the likes field of the picture.
-    picture.likes.add(request.user)
+    # Using this variable to see if they currently user logged in already liked the picture
+    liked = False
+
+    if ( picture.likes.filter(id=request.user.id).exists() ):
+        picture.likes.remove(request.user)
+        liked = False
+
+    else:
+        # Add the current user who liked the picture into the likes field of the picture.
+        picture.likes.add(request.user)
+        liked = True
 
     # Using HttpResponseRedirect from django.http we can just redirect the page 
     # to the same picture details page instead of going back to the home page.
