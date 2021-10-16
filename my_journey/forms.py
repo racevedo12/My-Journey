@@ -6,7 +6,7 @@ class CreatePictureForm(forms.ModelForm):
         model = Picture
         fields = ("user", "image_url",)
 
-        # This is to modify our form and add bootstrap classes into the fields
+        # This is to modify our form and add bootstrap or any css classes into the fields
 
         # Resources: 
         # https://docs.djangoproject.com/en/3.2/topics/forms/modelforms/
