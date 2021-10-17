@@ -43,8 +43,20 @@
                   <a class="nav-link" href="{% url 'login' %}"> Login </a>
                 </li>
               {% endif %}
-              
+
             </ul>
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            {% if user.is_authenticated %}
+
+              <li class="nav-item">
+                Hi {{ user.first_name }}!
+              </li>
+            
+            {% endif %}
+          <ul>
+
           </div>
           
         </div>
