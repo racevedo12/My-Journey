@@ -43,10 +43,8 @@
 
     {% for comment in picture.picture_comments.all %}
 
-        {% if user.id == comment.picture.user.id %}
+        <!-- {% if user.id == comment.picture.user.id %}
             <p> {{ comment.picture.user }} 
-                <!-- - <a href="{% url 'comment_picture_edit' pk=picture.pk %}"> Edit Comment </a> 
-                - <a href="{% url 'delete_picture' pk=picture.pk %}"> Delete Comment </a> -->
             </p> 
 
             <p> {{ comment.text }} </p>
@@ -55,7 +53,11 @@
                 <p> {{ comment.picture.user }} </p>
                 <p> {{ comment.text }} </p>
                 
-        {% endif %}
+        {% endif %} -->
+
+
+        <p> {{ comment.picture.user }} </p>
+        <p> {{ comment.text }} </p>
         
     {% endfor %}
 
