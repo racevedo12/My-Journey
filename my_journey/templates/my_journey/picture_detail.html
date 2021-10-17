@@ -3,8 +3,8 @@
 {% if user.is_authenticated %}
 
     {% if user.id == picture.user.id %}
-        <a href="{% url 'edit_picture' pk=picture.pk%}"> Edit Picture </a>
-        <a href="{% url 'delete_picture' pk=picture.pk%}"> Delete Picture </a>
+        <a href="{% url 'edit_picture' pk=picture.pk %}"> Edit Picture </a>
+        <a href="{% url 'delete_picture' pk=picture.pk %}"> Delete Picture </a>
         <hr/>
     {% endif %}
 
@@ -36,33 +36,39 @@
         </button>
         
     </form>
-    
+
     <hr/>
-{% endif %}
 
+    <h4> Comments </h4>
 
-<h4> Comments </h4>
+    {% for comment in picture.picture_comments.all %}
 
+        <p> {{ comment.picture.user }} </p>
+        <p> {{ comment.text }} </p>
+            
+    {% endfor %}
 
-{% for comment in picture.picture_comments.all %}
-
-    <p> {{ comment.name }} </p>
-    <p> {{ comment.text }} </p>
-        
-{% endfor %}
-
-{% if user.is_authenticated %}
-
-    <form action="{% url 'dislike_picture' pk=picture.pk %}" method="POST">
-        {% csrf_token %}
-        
-        <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-secondary"> 
-            Comment
-        </button>
-        
-    </form>
+    <a href="{% url 'comment_picture' pk=picture.pk %}" class="btn btn-outline-secondary"> 
+        Comment 
+    </a>
 
     <a href="{% url 'user_home_page' %}" class="btn btn-outline-dark"> Back </a>
+
+
+{% else %}
+    <hr/>
+    <h4> Comments </h4>
+    <br/>
+    
+    {% for comment in picture.picture_comments.all %}
+
+        <p> {{ comment.picture.user }} </p>
+        <p> {{ comment.text }} </p>
+            
+    {% endfor %}
+
+    <a href="{% url 'user_home_page' %}" class="btn btn-outline-dark"> Back </a>
+
 
 {% endif %}
 

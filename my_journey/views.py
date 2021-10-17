@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from .models import Picture, Comment
 
 # Importing forms
-from .forms import CreatePictureForm, EditPictureForm
+from .forms import CreatePictureForm, EditPictureForm, CreateCommentForm
 
 # Create your views here.
 class UserHomeView(ListView):
@@ -102,6 +102,11 @@ def DislikePictureView(request, pk):
 
 class AddCommentView(CreateView):
     model = Comment
-    # form_class = CreateCommentForm
-    template_name = "my_journey/add_comment.html"
-    fields = "__all__"
+    form_class = CreateCommentForm
+    template_name = "my_journey/comment_picture.html"
+
+    def form_valid(self, form):
+        form.instance.picture_id = self.kwargs["pk"]
+        return super().form_valid(form)
+
+    success_url = reverse_lazy("user_home_page")
