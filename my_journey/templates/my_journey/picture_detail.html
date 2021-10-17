@@ -43,9 +43,20 @@
 
     {% for comment in picture.picture_comments.all %}
 
-        <p> {{ comment.picture.user }} </p>
-        <p> {{ comment.text }} </p>
-            
+        {% if user.id == comment.picture.user.id %}
+            <p> {{ comment.picture.user }} 
+                <!-- - <a href="{% url 'comment_picture_edit' pk=picture.pk %}"> Edit Comment </a> 
+                - <a href="{% url 'delete_picture' pk=picture.pk %}"> Delete Comment </a> -->
+            </p> 
+
+            <p> {{ comment.text }} </p>
+        
+            {% else %}
+                <p> {{ comment.picture.user }} </p>
+                <p> {{ comment.text }} </p>
+                
+        {% endif %}
+        
     {% endfor %}
 
     <a href="{% url 'comment_picture' pk=picture.pk %}" class="btn btn-outline-secondary"> 
