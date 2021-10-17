@@ -1,0 +1,24 @@
+{% extends "my_journey/base.html" %} {% block content %}
+
+{% if user.is_authenticated %}
+    <h2> Add Comment </h2>
+    <br/>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        
+            <button class="btn btn-outline-success"> Add Comment </button>
+            <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
+        </form>
+    </div>
+ 
+{% else %}
+    <h2> You have to be logged in order to add a comment. </h2>
+
+{% endif %}
+
+
+
+{% endblock %}

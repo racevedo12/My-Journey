@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.http import HttpResponseRedirect
 
 # Importing models
-from .models import User, Picture
+from .models import Picture, Comment
 
 # Importing forms
 from .forms import CreatePictureForm, EditPictureForm
@@ -99,3 +99,9 @@ def DislikePictureView(request, pk):
         disliked = True
 
     return HttpResponseRedirect(reverse("picture_detail", args=(str(pk)) ))
+
+class AddCommentView(CreateView):
+    model = Comment
+    # form_class = CreateCommentForm
+    template_name = "my_journey/add_comment.html"
+    fields = "__all__"
