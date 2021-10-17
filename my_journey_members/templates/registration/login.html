@@ -4,13 +4,25 @@
 <br/>
 
 <div class="form-group">
+
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" id="login-username" style="margin-bottom: 2%;">
+        </div>
+        
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
     
+        <br/>
+
         <button class="btn btn-outline-success"> Login </button>
         <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
+
     </form>
+    
 </div>
 
 
