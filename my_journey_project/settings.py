@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if ('RDS_DB_NAME' in os.environ):
+if ('RDS_HOSTNAME' in os.environ):
 
     DATABASES = {
         'default': {
