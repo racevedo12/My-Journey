@@ -77,28 +77,32 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# Local Database
-# DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': 'my_journey',
-#             'USER': 'my_journey_user',
-#             'PASSWORD': 'my_journey',
-#             'HOST': 'localhost',
-#         }
-# }
+is_prod = os.environ.get('IS_HEROKU', None)
 
-# Live Database
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'd6q5h0v9n0h8c',
-            'USER': 'skpucytuqaqcnf',
-            'PASSWORD': 'd7941f34925e7fe8e3105f67958a37817f9941c44dd2a6e5d25e75aa11e72f5e',
-            'HOST': 'ec2-54-92-230-7.compute-1.amazonaws.com',
-            'PORT': '5432',
-        }
-}
+if (is_prod):
+    # Live Database
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': os.environ.get('NAME'),
+                'USER': os.environ.get('USER'),
+                'PASSWORD': os.environ.get('PASSWORD'),
+                'HOST': os.environ.get('HOST'),
+                'PORT': os.environ.get('PORT'),
+            }
+    }
+
+else:
+    # Local Database
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'my_journey',
+                'USER': 'my_journey_user',
+                'PASSWORD': 'my_journey',
+                'HOST': 'localhost',
+            }
+    }
 
 
 # Password validation
