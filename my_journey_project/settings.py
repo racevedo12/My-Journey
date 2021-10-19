@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3*lqvzemuppyk$#5%!wndowz23k4-cows^r#@%b!kmaty)4qji
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-journey-dev.us-east-1.elasticbeanstalk.com', 'localhost']
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -75,20 +75,7 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'RDS_DB_NAME' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
-        }
-    }
-
-else:
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'my_journey',
@@ -96,7 +83,7 @@ else:
             'PASSWORD': 'my_journey',
             'HOST': 'localhost',
         }
-    }
+}
 
 
 # Password validation
@@ -136,7 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
