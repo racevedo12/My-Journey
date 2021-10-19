@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 psycopg2-binary = "*"
-awsebcli = "*"
 psycopg2 = "*"
 
 [dev-packages]
