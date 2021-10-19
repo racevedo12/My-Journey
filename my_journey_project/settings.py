@@ -77,6 +77,10 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# Resource:
+    # https://stackoverflow.com/questions/28323666/setting-environment-variables-in-heroku-for-flask-app
+    
+# Checks if the environment is on production mode AKA Heroku
 is_prod = os.environ.get('IS_HEROKU', None)
 
 if (is_prod):
