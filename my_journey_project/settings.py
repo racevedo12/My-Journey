@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import django_heroku
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-3*lqvzemuppyk$#5%!wndowz23k4-cows^r#@%b!kmaty)4qji
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['ra-my-journey.herokuapp.com', 'localhost']
 
 # Application definition
 
@@ -75,13 +77,26 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# Local Database
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'my_journey',
+#             'USER': 'my_journey_user',
+#             'PASSWORD': 'my_journey',
+#             'HOST': 'localhost',
+#         }
+# }
+
+# Live Database
 DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'my_journey',
-            'USER': 'my_journey_user',
-            'PASSWORD': 'my_journey',
-            'HOST': 'localhost',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd6q5h0v9n0h8c',
+            'USER': 'skpucytuqaqcnf',
+            'PASSWORD': 'd7941f34925e7fe8e3105f67958a37817f9941c44dd2a6e5d25e75aa11e72f5e',
+            'HOST': 'ec2-54-92-230-7.compute-1.amazonaws.com',
+            'PORT': '5432',
         }
 }
 
@@ -122,7 +137,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
