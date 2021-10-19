@@ -75,11 +75,11 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if ('RDS_HOSTNAME' in os.environ):
+if 'RDS_DB_NAME' in os.environ:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2-binary',
             'NAME': os.environ['RDS_DB_NAME'],
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
@@ -92,7 +92,7 @@ else:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2-binary',
             'NAME': 'my_journey',
             'USER': 'my_journey_user',
             'PASSWORD': 'my_journey',
