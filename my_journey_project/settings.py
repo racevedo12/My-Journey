@@ -79,7 +79,7 @@ if 'RDS_DB_NAME' in os.environ:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2-binary',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ['RDS_DB_NAME'],
             'USER': os.environ['RDS_USERNAME'],
             'PASSWORD': os.environ['RDS_PASSWORD'],
@@ -92,7 +92,7 @@ else:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2-binary',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'my_journey',
             'USER': 'my_journey_user',
             'PASSWORD': 'my_journey',
