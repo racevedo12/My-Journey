@@ -78,11 +78,10 @@ WSGI_APPLICATION = 'my_journey_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('QOVERY_POSTGRESQL_ZB1843509_DEFAULT_DATABASE_NAME', 'postgres'),
-        'USER': os.environ.get('QOVERY_POSTGRESQL_ZB1843509_LOGIN', 'postgres'),
-        'PASSWORD': os.environ.get('QOVERY_POSTGRESQL_ZB1843509_PASSWORD'),
-        'HOST': os.environ.get('QOVERY_POSTGRESQL_ZB1843509_HOST', 'zb1843509-postgresql.||Q_DOMAIN||'),
-        'PORT': os.environ.get('QOVERY_POSTGRESQL_ZB1843509_PORT', 5432),
+        'NAME': 'my_journey',
+        'USER': 'my_journey_user',
+        'PASSWORD': 'my_journey',
+        'HOST': 'localhost',
     }
 }
 
