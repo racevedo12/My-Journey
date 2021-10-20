@@ -66,3 +66,13 @@ a:link
     margin-left: 18%;
     margin-bottom: 5%;
 }
+
+.edit-form
+{
+    margin-left: 10%;
+}
+
+.delete-form
+{
+    margin-left: 27%;
+}
