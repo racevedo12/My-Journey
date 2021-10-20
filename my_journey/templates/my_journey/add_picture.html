@@ -1,16 +1,19 @@
 {% extends "my_journey/base.html" %} {% block content %}
 
 {% if user.is_authenticated %}
-    <h2> Add Picture </h2>
+    <h2 id="add-title"> Add Picture </h2>
     <br/>
 
-    <div class="form-group">
+    <div class="form-group add-form">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
         
-            <button class="btn btn-outline-success"> Add </button>
-            <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
+            <div class="separate-buttons">
+                <button class="btn btn-outline-success"> Add </button>
+                <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
+            </div>
+            
         </form>
     </div>
 

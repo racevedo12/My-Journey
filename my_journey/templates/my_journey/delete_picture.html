@@ -3,7 +3,7 @@
 {% if user.is_authenticated %}
 
     {% if user.id == picture.user.id %}
-        <h2> Delete Picture </h2>
+        <h2 id="delete-title"> Delete Picture </h2>
         <br/>
 
         <div class="form-group delete-form">
@@ -11,8 +11,12 @@
                 {% csrf_token %}
                 
                 <h4> Are you sure you want to delete the picture? </h4>
-                <button class="btn btn-outline-success"> Yes </button>
-                <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> No </a>
+
+                <div class="separate-buttons">
+                    <button class="btn btn-outline-success"> Yes </button>
+                    <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> No </a>
+                </div>
+                
             
             </form>
         </div>

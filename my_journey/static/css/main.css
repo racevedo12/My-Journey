@@ -1,3 +1,10 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+
+
+/* Default Style */
 #app-title
 {
     text-align: center;
@@ -32,7 +39,7 @@ a:link
     margin-left: 20%;
 }
 
-.showing-likes, .like-buttons, .bottom-buttons
+.showing-likes, .like-buttons, .bottom-buttons, .separate-buttons
 {
     display: flex;
     justify-content: space-between;
@@ -67,12 +74,29 @@ a:link
     margin-bottom: 5%;
 }
 
-.edit-form
+.edit-form, .add-form
 {
     margin-left: 10%;
+    
 }
 
 .delete-form
 {
     margin-left: 27%;
+}
+
+/* Adding the same fonts to these classes and ids */
+.edit-form, .delete-form, .comment-title, .image-user, #app-title, .add-form
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.showing-likes, .like-buttons, .bottom-buttons, .comments-section, .home-page-text
+{
+    font-family: 'Merriweather', serif;
+}
+
+.home-nav-bar, .picture-links, #edit-title, #delete-title, #add-title
+{
+    font-family: 'Open Sans', sans-serif;
 }

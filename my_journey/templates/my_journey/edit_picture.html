@@ -3,16 +3,19 @@
 {% if user.is_authenticated %}
 
     {% if user.id == picture.user.id %}
-        <h2> Edit Picture </h2>
+        <h2 id="edit-title"> Edit Picture </h2>
         <br/>
 
         <div class="form-group edit-form">
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-            
-                <button class="btn btn-outline-success"> Update </button>
-                <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> Cancel </a>
+                
+                <div class="separate-buttons">
+                    <button class="btn btn-outline-success"> Update </button>
+                    <a href="{% url 'picture_detail' pk=picture.pk %}" class="btn btn-outline-danger"> Cancel </a>
+                </div>
+                
             </form>
         </div>
     
