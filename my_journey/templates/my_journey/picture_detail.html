@@ -18,36 +18,40 @@
     <img src={{ picture.image_url }} alt={{ picture.image_url }} />
 </div>
 
-
-<h4> Likes: {{ total_likes }} </h4>
-<h4> Dislikes: {{ total_dislikes }} </h4>
+<div class="showing-likes">
+    <h4> Likes: {{ total_likes }} </h4>
+    <h4> Dislikes: {{ total_dislikes }} </h4>
+</div>
 
 {% if user.is_authenticated %}
 
-    <form action="{% url 'like_picture' pk=picture.pk %}" method="POST">
-        {% csrf_token %}
-        
-        
-        <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-primary"> 
-            Like 
-        </button>
-
-    </form>
-
-    <form action="{% url 'dislike_picture' pk=picture.pk %}" method="POST">
-        {% csrf_token %}
-        
-        <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-danger"> 
-            Dislike 
-        </button>
-        
-    </form>
-
+    <div class="like-buttons">
+        <form action="{% url 'like_picture' pk=picture.pk %}" method="POST">
+            {% csrf_token %}
+            
+            
+            <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-primary"> 
+                Like 
+            </button>
+    
+        </form>
+    
+        <form action="{% url 'dislike_picture' pk=picture.pk %}" method="POST">
+            {% csrf_token %}
+            
+            <button type="submit", name="picture_id", value="{{ picture.id }}", class="btn btn-outline-danger dislike-button"> 
+                Dislike 
+            </button>
+            
+        </form>
+    </div>
+    
     <hr/>
 
-    <h4> Comments </h4>
+    <h4 class="comment-title"> Comments </h4>
 
-    {% for comment in picture.picture_comments.all %}
+    <div class="comments-section">
+        {% for comment in picture.picture_comments.all %}
 
         <!-- {% if user.id == comment.picture.user.id %}
             <p> {{ comment.picture.user }} 
@@ -59,32 +63,36 @@
                 <p> {{ comment.picture.user }} </p>
                 <p> {{ comment.text }} </p>
                 
-        {% endif %} -->
+            {% endif %} -->
 
-
-        <p> {{ comment.picture.user }} </p>
-        <p> {{ comment.text }} </p>
-        
-    {% endfor %}
-
-    <a href="{% url 'comment_picture' pk=picture.pk %}" class="btn btn-outline-secondary"> 
-        Comment 
-    </a>
-
-    <a href="{% url 'user_home_page' %}" class="btn btn-outline-dark"> Back </a>
+            <h5> {{ comment.picture.user }} </h5>
+            <p class="comment"> {{ comment.text }} </p>
+            
+        {% endfor %}
+    </div>
+    
+    <div class="bottom-buttons">
+        <a href="{% url 'comment_picture' pk=picture.pk %}" class="btn btn-outline-secondary"> 
+            Comment 
+        </a>
+    
+        <a href="{% url 'user_home_page' %}" class="btn btn-outline-dark"> Back </a>
+    </div>
+    
 
 
 {% else %}
     <hr/>
-    <h4> Comments </h4>
+    <h4 class="comment-title"> Comments </h4>
     <br/>
     
-    {% for comment in picture.picture_comments.all %}
-
-        <p> {{ comment.picture.user }} </p>
-        <p> {{ comment.text }} </p>
-            
-    {% endfor %}
+    <div class="comments-section">
+        {% for comment in picture.picture_comments.all %}
+            <h5> {{ comment.picture.user }} </h5>
+            <p class="comment"> {{ comment.text }} </p>
+                
+        {% endfor %}
+    </div>
 
     <a href="{% url 'user_home_page' %}" class="btn btn-outline-dark"> Back </a>
 

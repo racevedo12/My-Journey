@@ -31,3 +31,38 @@ a:link
 {
     margin-left: 20%;
 }
+
+.showing-likes, .like-buttons, .bottom-buttons
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+.dislike-button
+{
+    position: relative;
+    right: 40%;
+}
+
+.comment-title
+{
+    text-align: center;
+}
+
+.comments-section
+{
+    margin-top: 3%;
+    margin-left: 7%;
+    margin-bottom: 5%;
+    margin-right: 4%;
+
+    border: black dashed 1px;
+}
+
+.comment
+{
+    margin-left: 18%;
+    margin-bottom: 5%;
+}
