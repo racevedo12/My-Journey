@@ -2,6 +2,23 @@
 ### This app is a social media site in which users can post pictures but also the users can like, dislike, and comment on them.
 
 
+## Screenshots
+
+### Home Page
+
+![Home Page](https://user-images.githubusercontent.com/58488936/138161354-a7ccfbe4-09dd-4d92-b6e4-07f30fa8c6bb.png)
+
+
+### Item Details Page with user logged in
+
+![User logged in](https://user-images.githubusercontent.com/58488936/138161384-7e4e2789-0833-4fc0-b040-e42d77039005.png)
+
+
+### Item Details Page without user logged in
+
+![User not logged in](https://user-images.githubusercontent.com/58488936/138161467-e645897d-8041-44a9-81fd-e34dd1b53372.png)
+
+
 ## Technologies
 - HTML5
 - CSS3
