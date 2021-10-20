@@ -40,7 +40,7 @@
 - Clone your forked repository.
 - Open up your terminal/command line to go to your cloned repository on your local machine.
 - Type in ```pipenv shell``` to enter the environment shell.
-- Then type ```pip install . ```  or ```pipenv install . ``` to get all the packages needed to run the server.
+- Then type ```pip install -r requirements.txt ```  or ```pipenv install -r requirements.txt. ``` to get all the packages needed to run the server.
 - Then type in ```psql``` to enter to your postgresql shell and type in ```\i settings.sql``` to get your database set up locally.
 - Enter ```python manage.py migrate``` to get all the models for the database.
 - Finally run ```python manage.py runserver``` and you will see that your server is going to be running.
