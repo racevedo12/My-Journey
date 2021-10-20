@@ -3,15 +3,21 @@
 {% if user.is_authenticated %}
 
     {% if user.id == picture.user.id %}
-        <a href="{% url 'edit_picture' pk=picture.pk %}"> Edit Picture </a>
-        <a href="{% url 'delete_picture' pk=picture.pk %}"> Delete Picture </a>
+        <div class="picture-links">
+            <a href="{% url 'edit_picture' pk=picture.pk %}"> Edit Picture </a>
+            <a href="{% url 'delete_picture' pk=picture.pk %}"> Delete Picture </a>
+        </div>
+
         <hr/>
     {% endif %}
 
 {% endif %}
 
-<h3> User: {{ picture.user }}</h3>
-<img src={{ picture.image_url }} alt={{ picture.image_url }} />
+<div class="image-details">
+    <h3 class="image-user"> User: {{ picture.user }}</h3>
+    <img src={{ picture.image_url }} alt={{ picture.image_url }} />
+</div>
+
 
 <h4> Likes: {{ total_likes }} </h4>
 <h4> Dislikes: {{ total_dislikes }} </h4>

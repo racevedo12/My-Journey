@@ -1,16 +1,20 @@
 {% extends "my_journey/base.html" %} {% block content %}
 
-<!-- <h1> My Journey </h1> -->
+<h1 id="app-title"> My Journey </h1>
 <h3> These are the pictures that the users have added so far. Click on them to see the details. </h3>
 <hr/>
 
 {% for picture in object_list %}
-        
-    <a href="{% url 'picture_detail' pk=picture.pk %}"> 
-        <img src={{ picture.image_url }} alt={{ picture.image_url }} /> 
-    </a>
 
-    <br/>
+    <div class="pictures">
+
+        <a href="{% url 'picture_detail' pk=picture.pk %}"> 
+            <img src={{ picture.image_url }} alt={{ picture.image_url }} /> 
+        </a>
+
+        <br/>
+    </div>
+    
 
 {% endfor %}
 
