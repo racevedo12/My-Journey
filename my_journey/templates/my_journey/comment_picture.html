@@ -9,12 +9,19 @@
             {% csrf_token %}
             {{ form.as_p }}
         
-            <button class="btn btn-outline-success"> Add Comment </button>
+            <button class="btn btn-outline-success" id="user"> Add Comment </button>
             
             <a href="{% url 'user_home_page' %}" class="btn btn-outline-danger"> Cancel </a>
         </form>
     </div>
- 
+    
+    <!-- Added this script in order to get the current user logged in -->
+    <!-- So we can post the correct user who made the comment in the Item Details Page -->
+    <script>
+        let userName = "{{ user.username }}";
+        document.getElementById("user").value = userName;
+    </script>
+
 {% else %}
     <h2> You have to be logged in order to add a comment. </h2>
 

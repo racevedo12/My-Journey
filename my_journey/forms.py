@@ -30,8 +30,11 @@ class EditPictureForm(forms.ModelForm):
 class CreateCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ("text",)
+        fields = ("text", "name",)
         
         widgets = {
+
             "text": forms.Textarea(attrs={"class": "form-control", "placeholder": "Type in your comment"} ),
+
+            "name": forms.TextInput(attrs={"class": "form-control", "value": "", "id": "user", "type": "hidden"}),
         }
